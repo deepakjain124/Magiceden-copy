@@ -1,0 +1,21 @@
+
+  .react-horizontal-scrolling-menu--arrow-left{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 15px;
+  }
+  .react-horizontal-scrolling-menu--arrow-left button:focus{
+    border:"red";
+    outline: none;
+  }
+  .react-horizontal-scrolling-menu--arrow-right{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 15px;
+  }
+  .react-horizontal-scrolling-menu--arrow-right button:focus{
+    border:"red";
+    outline: none;
+  }
