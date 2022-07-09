@@ -1,15 +1,14 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import { ScrollMenu } from "react-horizontal-scrolling-menu";
 
 import { LeftArrow, RightArrow } from "./Arrow";
-import  Card  from "./Card";
+import Card from "./Card";
 import usePreventBodyScroll from "./usePreventBodyScroll";
 
 // NOTE: embrace power of CSS flexbox!
 import "./hideScrollbar.css";
 // import "./firstItemMargin.css";
-
 
 const elemPrefix = "test";
 const getId = (index) => `${elemPrefix}${index}`;
@@ -19,42 +18,49 @@ const getItems = () =>
     .fill(0)
     .map((_, ind) => ({ id: getId(ind) }));
 
-function Carousal({coming}) {
-  const[data,setdata]=useState(coming)
+function Carousal({ coming,open }) {
+  const [data, setdata] = useState(coming);
+  const [showarrow, setshowarrow] = useState(true);
 
   const [items] = React.useState(getItems);
   const { disableScroll, enableScroll } = usePreventBodyScroll();
+  const handleResize = () => {
+    if (window.innerWidth < 700) {
+      setshowarrow(false);
+    } else {
+      setshowarrow(true);
+    }
+  };
+
+  // create an event listener
+  React.useEffect(() => {
+    handleResize();
+  }, [window.innerWidth]);
 
   return (
     <>
-      <div className="example" style={{width:"100%",marginTop:"20px"}}>
+      <div className="example" style={{ width: "100%", marginTop: "20px" }}>
         <div onMouseEnter={disableScroll} onMouseLeave={enableScroll}>
           <ScrollMenu
-            LeftArrow={LeftArrow}
-            RightArrow={RightArrow}
+            LeftArrow={showarrow && LeftArrow}
+            RightArrow={showarrow && RightArrow}
             onWheel={onWheel}
           >
-            {/* {items.map(({ id }) => (
-              <Card
-                title={id}
-                itemId={id} // NOTE: itemId is required for track items
-                key={id}
-                // item={item}
-              />
-            ))} */}
-            {
-              data?.map((item)=>{
-                return <Card
-                title={item.id}
-                itemId={item.id} // NOTE: itemId is required for track items
-                key={item.id}
-                item={item}
+            {data?.map((item) => {
+              return (
+                <Card
+                  title={item.id}
+                  itemId={item.id} // NOTE: itemId is required for track items
+                  key={item.id}
+                  item={item}
                 />
-              })
-            }
+              );
+            })}
           </ScrollMenu>
         </div>
       </div>
+      {!open &&<button style={{marginTop:"20px",height:"40px",width:"100%",borderRadius:"20px",fontWeight:"500",fontSize:"15px",background:"transparent",color:"#fff",border:"2px solid rgba(36,24,47)",}}>See All</button>
+ }
     </>
   );
 }

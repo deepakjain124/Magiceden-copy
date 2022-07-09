@@ -20,12 +20,13 @@ function Arrow({
         justifyContent: "center",
         alignItems:"center",
         background:"rgba(28,19,38)",
-        borderColor:"rgba(36,24,47)",
+        border:"2px solid rgba(36,24,47)",
         height:"40px",
         borderRadius:"100px",
-        opacity: disabled ? "0" : "1",
+        display: disabled ? "none" : "block",
         userSelect: "none",
-        color:"white"
+        color:"white",
+        padding:"7px"
       }}
     >
       {children}
@@ -53,7 +54,7 @@ export function LeftArrow() {
 
   return (
     <Arrow style={{color:"white"}} disabled={disabled} onClick={() => scrollPrev()}>
-      <ArrowForwardIosIcon/>
+      <ArrowBackIosIcon style={{fontSize:'15px'}}/>
     </Arrow>
   );
 }
@@ -76,7 +77,7 @@ export function RightArrow() {
 
   return (
     <Arrow disabled={disabled} onClick={() => scrollNext()}>
-      <ArrowBackIosIcon/>
+      <ArrowForwardIosIcon style={{fontSize:'15px'}}/>
     </Arrow>
   );
 }

@@ -29,7 +29,8 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import Footer from "./Footer";
 import Carousal from "./Carousal";
-import { Auctions, launchpad, Newtonft } from "./Alldata";
+import { Auctions, Highestsale, launchpad, MagicDaovoted, Mostfollowed, NewCollection, Newtonft, TopCommunity, TopMarket, upcomingLaunches } from "./Alldata";
+import Maincarousal from "./Maincarousal";
 
 const drawerWidth = 240;
 
@@ -82,10 +83,7 @@ export default function Bar() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
   const handleResize = () => {
-    if (window.innerWidth < 620) {
-      setOpen(false);
-    } else if (window.innerWidth < 720) {
-      // setIsMobile(false)
+    if (window.innerWidth < 900) {
       setOpen(false);
     } else {
       setOpen(true);
@@ -94,8 +92,8 @@ export default function Bar() {
 
   // create an event listener
   React.useEffect(() => {
-    window.addEventListener("resize", handleResize);
-  });
+     handleResize()
+  },[window.innerWidth]);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -104,25 +102,6 @@ export default function Bar() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-  //   const responsive = {
-  //     superLargeDesktop: {
-  //       // the naming can be any, depends on you.
-  //       breakpoint: { max: 4000, min: 3000 },
-  //       items: 5
-  //     },
-  //     desktop: {
-  //       breakpoint: { max: 3000, min: 1024 },
-  //       items: 3
-  //     },
-  //     tablet: {
-  //       breakpoint: { max: 1024, min: 464 },
-  //       items: 2
-  //     },
-  //     mobile: {
-  //       breakpoint: { max: 464, min: 0 },
-  //       items: 1
-  //     }
-  //   };
 
   return (
     <>
@@ -283,28 +262,27 @@ export default function Bar() {
 
         <Main open={open} className="right_section">
           <DrawerHeader />
+          <Maincarousal/>
           <Smallslider toggle={true} text="Lanuchpad Drops" />
-          <Carousal coming={launchpad} />
-          <Smallslider text="New to NFTs" />
-          <Carousal coming={Newtonft}  />
-          <Smallslider text="Upcoming Launches" />
-          <Carousal />
-          <Smallslider text="Top Community Upvoted Drops" />
-          <Carousal />
-          <Smallslider text="Auctions" />
-          <Carousal coming={Auctions} />
-          <Smallslider text="Top Marketcap Projects" />
-          <Carousal />
-          <Smallslider text="OG SOL Projects" />
-          <Carousal />
-          <Smallslider text="Most Followed Collections" />
-          <Carousal />
-          <Smallslider text="MagicDAO Voted" />
-          <Carousal />
-          <Smallslider text="Highest Sales" />
-          <Carousal />
-          <Smallslider text="New Collections" />
-          <Carousal />
+          <Carousal open={open} coming={launchpad} />
+          <Smallslider open={open} text="New to NFTs" />
+          <Carousal open={open} coming={Newtonft}  />
+          <Smallslider open={open} text="Upcoming Launches" />
+          <Carousal open={open} coming={upcomingLaunches} />
+          <Smallslider open={open} text="Top Community Upvoted Drops" />
+          <Carousal open={open} coming={TopCommunity} />
+          <Smallslider open={open} text="Auctions" />
+          <Carousal open={open} coming={Auctions} />
+          <Smallslider open={open} text="Top Marketcap Projects" />
+          <Carousal open={open} coming={TopMarket} />
+          <Smallslider info={true} open={open} text="Most Followed Collections" />
+          <Carousal open={open} coming={Mostfollowed} />
+          <Smallslider open={open} text="MagicDAO Voted" />
+          <Carousal open={open} coming={MagicDaovoted} />
+          <Smallslider info={true} open={open} text="Highest Sales" />
+          <Carousal open={open} coming={Highestsale} />
+          <Smallslider  open={open} text="New Collections" />
+          <Carousal open={open} coming={NewCollection} />
           <Footer />
         </Main>
       </Box>
