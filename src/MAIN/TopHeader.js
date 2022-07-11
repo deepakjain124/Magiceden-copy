@@ -1,4 +1,5 @@
 import React from "react";
+import Searchheader from "./Searchheader";
 
 const TopHeader = () => {
   return (
@@ -18,6 +19,7 @@ const TopHeader = () => {
           Solana Network:<span className="yellow">1,509 TPS</span>
         </p>
       </div>
+
     </>
   );
 };

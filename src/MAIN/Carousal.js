@@ -2,27 +2,18 @@ import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import { ScrollMenu } from "react-horizontal-scrolling-menu";
 
-import { LeftArrow, RightArrow } from "./Arrow";
-import Card from "./Card";
-import usePreventBodyScroll from "./usePreventBodyScroll";
+import { LeftArrow, RightArrow } from "../MAIN/Arrow";
+import Card from "../MAIN/Card";
+import usePreventBodyScroll from "../MAIN/usePreventBodyScroll";
 
 // NOTE: embrace power of CSS flexbox!
 import "./hideScrollbar.css";
 // import "./firstItemMargin.css";
 
-const elemPrefix = "test";
-const getId = (index) => `${elemPrefix}${index}`;
-
-const getItems = () =>
-  Array(10)
-    .fill(0)
-    .map((_, ind) => ({ id: getId(ind) }));
-
-function Carousal({ coming,open }) {
+function Carousal({ coming, open }) {
   const [data, setdata] = useState(coming);
   const [showarrow, setshowarrow] = useState(true);
 
-  const [items] = React.useState(getItems);
   const { disableScroll, enableScroll } = usePreventBodyScroll();
   const handleResize = () => {
     if (window.innerWidth < 700) {
@@ -59,8 +50,23 @@ function Carousal({ coming,open }) {
           </ScrollMenu>
         </div>
       </div>
-      {!open &&<button style={{marginTop:"20px",height:"40px",width:"100%",borderRadius:"20px",fontWeight:"500",fontSize:"15px",background:"transparent",color:"#fff",border:"2px solid rgba(36,24,47)",}}>See All</button>
- }
+      {!open && (
+        <button
+          style={{
+            marginTop: "20px",
+            height: "40px",
+            width: "100%",
+            borderRadius: "20px",
+            fontWeight: "500",
+            fontSize: "15px",
+            background: "transparent",
+            color: "#fff",
+            border: "2px solid rgba(36,24,47)",
+          }}
+        >
+          See All
+        </button>
+      )}
     </>
   );
 }

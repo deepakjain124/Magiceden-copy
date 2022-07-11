@@ -1,5 +1,4 @@
 import React from "react";
-import InfoIcon from "@mui/icons-material/Info";
 const Smallslider = ({ toggle, text, open ,info}) => {
   return (
     <>

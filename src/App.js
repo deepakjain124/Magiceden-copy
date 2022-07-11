@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import Bar from './Main'
-import TopHeader from './TopHeader'
+import Bar from './MAIN/Main'
+import TopHeader from './MAIN/TopHeader'
 import "./App.css"
-import Searchheader from './Searchheader'
+import Modal from './MAIN/Modal'
 
 const App = () => {
   const [isMobile, setIsMobile] = useState(false)
- 
+ const[open,setopen]=useState(false)
 //choose the screen size 
 const handleResize = () => {
   if (window.innerWidth < 720) {
@@ -23,10 +23,10 @@ useEffect(() => {
 })
   return (
     <>
-    <div onClick={()=>{}}>
+    <Modal open={open} setopen={setopen}/>
+    <div onClick={()=>setopen(true)}>
     <TopHeader/>
-    <Searchheader/>
-    <div><Bar/></div>
+        <div><Bar/></div>
     </div>
     
     </>

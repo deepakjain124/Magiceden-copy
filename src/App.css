@@ -28,36 +28,108 @@ html {
 .yellow {
   color: rgba(255, 170, 0);
 }
+
 /* TopHeader Css End */
 
+.small_device {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 20px;
+  width: 100%;
+  gap: 195px;
+}
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.second_header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.searchbar {
+  background-color: #e42575;
+  width: 600px;
+  border-radius: 50px;
+  padding: 10px;
+  background-color: rgb(36, 24, 47);
+  transition: 0.5s all ease-in;
+}
+.searchbar:hover {
+  border: 0.5px solid #fff;
+}
+.searchbar .inputfield {
+  background-color: rgb(36, 24, 47);
+  outline: none;
+  border: none;
+  width: 520px;
+  color: white;
+  margin-left: 5px;
+}
+.inputfield::placeholder {
+  font-size: 14px;
+  font-weight: 500;
+}
+.connect_wallet {
+  background-color: transparent;
+  height: 40px;
+  width: 18 0px;
+  display: flex;
+  border-left: 1px solid #e42575;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.connect_wallet button:nth-child(1) {
+  background-color: transparent;
+  height: 40px;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  border: 1px solid #e42575;
+}
+.connect_wallet button:nth-child(2) {
+  color: white;
+  background-color: transparent;
+  height: 40px;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border: 1px solid #e42575;
+}
 .right_section {
   background: rgba(28, 19, 38);
   width: calc(100% - 240px);
   padding: 7px !important;
+  margin-top: 30px;
 }
-.headername{
+.headername {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.headername button{
+.headername button {
   background-color: transparent;
   color: #fff;
   border-radius: 3px;
   font-weight: 500;
+  margin-right: 20px;
   width: 80px;
   font-size: 18px;
   padding: 5px;
   border-width: 2px;
- border:2px solid rgba(36,24,47,1) !important;
- outline: none;
+  border: 2px solid rgba(36, 24, 47, 1) !important;
+  outline: none;
 }
 .heading {
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 50px;
 }
 .heading h1 {
   font-size: 23px;
@@ -89,6 +161,52 @@ html {
 /* rgba(36,24,47, */
 .card {
   border-color: rgba(36, 24, 47);
+  margin: 0 8px;
+  width: 220px;
+  min-height: 220px;
+  max-height: 256px;
+  outline: none;
+  text-align: center;
+  background: rgba(28, 19, 38);
+  user-select: none;
+  border-radius: 0.75rem;
+  /* border-top-right-radius: 0.75rem;
+  border-top-left-radius: 0.75rem; */
+}
+.card .name_1{
+  color:rgba(248,247,248);
+  font-size:.875rem;
+  line-height:1.25rem;
+  margin-top:6px;
+  margin-bottom: 0;
+}
+.card .name_2{
+  color: rgba(228,37,117);
+  font-size:.75rem;
+  margin-bottom:9px;
+}
+.card .name_3{
+  color:rgba(0,219,128);
+  border-radius:20px;
+  width:50px;
+  margin:auto auto 20px auto;
+  background-color:#312f2f;
+  opacity:0.4
+}
+.Arrow_button {
+  cursor: pointer;
+  width: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(28, 19, 38);
+  border: 2px solid rgba(36, 24, 47);
+  height: 40px;
+  border-radius: 100px;
+  user-select: none;
+  color: white;
+  padding: 7px;
 }
 
 /* footer section */
@@ -113,7 +231,7 @@ html {
 }
 .section_2 h4 {
   color: #fff;
-  font-size: 15px;
+  font-size: 20px;
 }
 .section_2 p {
   color: lightgray;
@@ -129,6 +247,10 @@ html {
     gap: 40px;
     align-items: flex-start;
   }
+  .section_2 h4 {
+    color: #fff;
+    font-size: 15px;
+  }
   .toggle {
     margin-left: 4px;
   }
@@ -139,23 +261,27 @@ html {
     align-items: center;
     margin-top: 20px;
   }
-  .carousal_container{
+  .carousal_container {
     display: flex !important;
     justify-content: center;
     flex-direction: column-reverse;
     align-items: center;
-    border:2px solid rgba(36, 24, 47);
-  border-radius: 50px;
+    border: 2px solid rgba(36, 24, 47);
+    border-radius: 50px;
   }
 }
 @media only screen and (max-width: 1020px) {
-  .carousal_container{
+  .carousal_container {
     display: flex !important;
     justify-content: center;
     flex-direction: column-reverse;
     align-items: center;
-    border:2px solid rgba(36, 24, 47);
-  border-radius: 50px;
+    border: 2px solid rgba(36, 24, 47);
+    border-radius: 50px;
+  }
+  .section_2 h4 {
+    color: #fff;
+    font-size: 15px;
   }
 }
 @media only screen and (max-width: 720px) {
@@ -165,6 +291,10 @@ html {
     gap: 30px;
     align-items: flex-start;
   }
+  .section_2 h4 {
+    color: #fff;
+    font-size: 15px;
+  }
   .toggle {
     margin-left: 4px;
   }
@@ -175,24 +305,24 @@ html {
     align-items: center;
     margin-top: 20px;
   }
-  .carousal_container{
+  .carousal_container {
     display: flex !important;
     justify-content: center;
     flex-direction: column-reverse;
     align-items: center;
-    border:2px solid rgba(36, 24, 47);
-  border-radius: 50px;
+    border: 2px solid rgba(36, 24, 47);
+    border-radius: 50px;
   }
 }
 
-.carousal_container{
+.carousal_container {
   display: flex !important;
   justify-content: space-between;
   align-items: center;
-  border:2px solid rgba(36, 24, 47);
-border-radius: 50px;
+  border: 2px solid rgba(36, 24, 47);
+  border-radius: 50px;
 }
-.left_container{
+.left_container {
   display: flex;
   margin: 20px;
   width: 400px;
@@ -200,20 +330,21 @@ border-radius: 50px;
   justify-content: flex-start;
   align-items: flex-start;
 }
-.left_container h2{
+.left_container h2 {
   font-weight: 800;
-   line-height: 120%;
+  line-height: 120%;
   color: #fff;
   font-size: 50px;
 }
-.left_container p{
-  color:rgba(161,151,170);
+.left_container p {
+  color: rgba(161, 151, 170);
   font-size: 20px;
+  line-height: 25px;
   text-overflow: ellipsis;
 }
-.left_container button{
+.left_container button {
   background-color: #e42575;
-  color:#fff;
+  color: #fff;
   padding: 15px;
   border-radius: 10px;
   border: none;
@@ -221,7 +352,7 @@ border-radius: 50px;
   font-weight: 600;
   outline: none;
 }
-.carausal_img{
+.carausal_img {
   width: 100%;
   height: 520px;
   border-top-right-radius: 50px;
@@ -229,10 +360,13 @@ border-radius: 50px;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
 }
- .ant-carousel .slick-dots-bottom {
+.ant-carousel .slick-dots-bottom {
   bottom: -25px !important;
   position: absolute;
 }
-.ant-carousel .slick-dots li{
+.ant-carousel .slick-dots li {
   width: 71px !important;
+}
+button:focus {
+  outline: none;
 }

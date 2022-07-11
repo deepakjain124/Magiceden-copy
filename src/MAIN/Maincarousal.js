@@ -1,19 +1,12 @@
 import { Carousel } from "antd";
 import "antd/dist/antd.css";
-import { Carousal } from "./Alldata";
+import { Carousal } from "../MAIN/Alldata";
 
 import React, { useState } from "react";
-const contentStyle = {
-  height: "160px",
-  color: "#fff",
-  lineHeight: "160px",
-  textAlign: "center",
-  background: "#364d79",
-};
 
 const Maincarousal = () => {
 
-  const[carousaldata,setcarousaldata]=useState([Carousal])
+  const[carousaldata,setcarousaldata]=useState(Carousal)
   console.log(carousaldata,"carousaldata");
   const onChange = (currentSlide) => {
     console.log(currentSlide);
@@ -24,8 +17,7 @@ const Maincarousal = () => {
        <Carousel className="carousal" afterChange={onChange}>
       {
         carousaldata.map((item)=>{
-          console.log(item,"item");    
-        <div className="carousal_container">
+    return   <div className="carousal_container">
           <div className="left_container">
             <h2>{item.heading}</h2>
             <p>
@@ -37,7 +29,7 @@ const Maincarousal = () => {
             <img
               className="carausal_img"
               src={item.image}
-              alt="carousal image"
+              alt="carousalimg"
             />
           </div>
         </div>;

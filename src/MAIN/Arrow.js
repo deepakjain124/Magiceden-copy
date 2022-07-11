@@ -1,32 +1,16 @@
 import React from "react";
-import "./firstItemMargin.css"
+import "./firstItemMargin.css";
 import { VisibilityContext } from "react-horizontal-scrolling-menu";
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-function Arrow({
-  children,
-  disabled,
-  onClick
-}) {
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+function Arrow({ children, disabled, onClick }) {
   return (
     <button
-    disabled={disabled}
+      className="Arrow_button"
+      disabled={disabled}
       onClick={onClick}
       style={{
-        cursor: "pointer",
-        width:"40px",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems:"center",
-        background:"rgba(28,19,38)",
-        border:"2px solid rgba(36,24,47)",
-        height:"40px",
-        borderRadius:"100px",
         display: disabled ? "none" : "block",
-        userSelect: "none",
-        color:"white",
-        padding:"7px"
       }}
     >
       {children}
@@ -39,7 +23,7 @@ export function LeftArrow() {
     isFirstItemVisible,
     scrollPrev,
     visibleItemsWithoutSeparators,
-    initComplete
+    initComplete,
   } = React.useContext(VisibilityContext);
 
   const [disabled, setDisabled] = React.useState(
@@ -53,18 +37,19 @@ export function LeftArrow() {
   }, [isFirstItemVisible, visibleItemsWithoutSeparators]);
 
   return (
-    <Arrow style={{color:"white"}} disabled={disabled} onClick={() => scrollPrev()}>
-      <ArrowBackIosIcon style={{fontSize:'15px'}}/>
+    <Arrow
+      style={{ color: "white" }}
+      disabled={disabled}
+      onClick={() => scrollPrev()}
+    >
+      <ArrowBackIosIcon style={{ fontSize: "15px" }} />
     </Arrow>
   );
 }
 
 export function RightArrow() {
-  const {
-    isLastItemVisible,
-    scrollNext,
-    visibleItemsWithoutSeparators
-  } = React.useContext(VisibilityContext);
+  const { isLastItemVisible, scrollNext, visibleItemsWithoutSeparators } =
+    React.useContext(VisibilityContext);
 
   const [disabled, setDisabled] = React.useState(
     !visibleItemsWithoutSeparators.length && isLastItemVisible
@@ -77,7 +62,7 @@ export function RightArrow() {
 
   return (
     <Arrow disabled={disabled} onClick={() => scrollNext()}>
-      <ArrowForwardIosIcon style={{fontSize:'15px'}}/>
+      <ArrowForwardIosIcon style={{ fontSize: "15px" }} />
     </Arrow>
   );
 }
