@@ -7,7 +7,6 @@ import React, { useState } from "react";
 const Maincarousal = () => {
 
   const[carousaldata,setcarousaldata]=useState(Carousal)
-  console.log(carousaldata,"carousaldata");
   const onChange = (currentSlide) => {
     console.log(currentSlide);
   };

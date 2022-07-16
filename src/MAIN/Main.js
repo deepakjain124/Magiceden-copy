@@ -113,6 +113,8 @@ export default function Bar() {
           </IconButton>
         </DrawerHeader> */}
           <Divider />
+         
+          <List>
           <svg
             width="189"
             height="68"
@@ -162,7 +164,6 @@ export default function Bar() {
               fill="white"
             />
           </svg>
-          <List>
             {[
               { text: "Marketpalce", icon: <AutoAwesomeIcon /> },
               { text: "Insight", icon: <InsightsOutlinedIcon /> },
@@ -176,7 +177,7 @@ export default function Bar() {
               { text: "Support", icon: <HelpOutlineOutlinedIcon /> },
               { text: "Resources", icon: <HelpOutlineOutlinedIcon /> },
             ].map((text, index) => (
-              <ListItem key={text} disablePadding>
+              <ListItem className="list_icons" key={text} disablePadding>
                 <ListItemButton style={{ fontSize: "14px" }}>
                   <ListItemIcon style={{ color: "white" }}>
                     {text.icon}
@@ -194,7 +195,7 @@ export default function Bar() {
           <Divider
             sx={{
               color: "white",
-              marginTop: "80px",
+              marginTop: "50px",
             }}
           />
           <Stack
