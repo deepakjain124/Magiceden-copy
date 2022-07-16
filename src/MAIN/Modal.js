@@ -28,9 +28,6 @@ export default function Modal({
   setopeninput,
   setwalletname = { setwalletname },
 }) {
-  const handleClose = () => {
-    setopen(false);
-  };
   const Demo = styled("div")(({ theme }) => ({
     backgroundColor: theme.palette.background.paper,
   }));
@@ -111,7 +108,7 @@ export default function Modal({
   const [showlist, setshowlist] = React.useState(false);
   return (
     <div>
-      <Dialog style={{ height: "100%" }} open={open} onClose={handleClose}>
+      <Dialog style={{ maxHeight: "95%" }} open={open}>
         <div
           style={{
             background: "#10141f",
@@ -247,10 +244,7 @@ export default function Modal({
             </clipPath>
           </defs>
         </svg>
-        <DialogContent
-          style={{ background: "#10141f" }}
-          onClick={() => setshowlist(!showlist)}
-        >
+        <DialogContent style={{ background: "#10141f" }}>
           <p
             style={{
               color: "white",
@@ -259,6 +253,7 @@ export default function Modal({
               justifyContent: "center",
               alignItems: "center",
             }}
+            onClick={() => setshowlist(!showlist)}
           >
             Already have a wallet? View options{" "}
             {showlist ? <KeyboardArrowDownIcon /> : <KeyboardArrowUpIcon />}
@@ -270,7 +265,14 @@ export default function Modal({
                   <List dense={true}>
                     {list.map((item, index) => {
                       return (
-                        <ListItem key={index}>
+                        <ListItem
+                          onClick={() => {
+                            setopen(false);
+                            setopeninput(true);
+                            setwalletname(item.text);
+                          }}
+                          key={index}
+                        >
                           <ListItemAvatar>
                             <img src={item.image} width={45} />
                           </ListItemAvatar>
@@ -279,11 +281,6 @@ export default function Modal({
                               color: "#fff",
                               fontSize: "15px",
                               marginTop: "19px",
-                            }}
-                            onClick={() => {
-                              setopen(false);
-                              setopeninput(true);
-                              setwalletname(item.text);
                             }}
                           >
                             {item.text}
